@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using trello.ViewModels;
 
 namespace trello.NewFolder
 {
@@ -10,7 +11,19 @@ namespace trello.NewFolder
     {
         public IActionResult Index()
         {
-            return View();
+            var model = new BoardList();
+
+            var board = new BoardList.Board();
+            board.Title = "Jon's Board";
+            model.Boards.Add(board);
+
+            var anotherBoard = new BoardList.Board();
+            anotherBoard.Title = "Another Board";
+            model.Boards.Add(anotherBoard);
+
+            return View(model);
         }
+
+
     }
 }
